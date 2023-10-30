@@ -32,6 +32,7 @@ Route::get('/cart', [CartController::class,'cart'])->name('shop.cart');
 Route::post('/add-to-cart', [CartController::class,'AddToCart'])->name('shop.AddToCart');
 Route::post('/update-cart', [CartController::class,'updateCart'])->name('shop.updateCart');
 Route::post('/delete-item', [CartController::class,'deleteItem'])->name('shop.deleteItem');
+Route::get('/checkout', [CartController::class,'checkout'])->name('shop.checkout');
 
 
 

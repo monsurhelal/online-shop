@@ -79,4 +79,8 @@ class CartController extends Controller
             'message' => 'cart delete successfuly'
         ]);
     }
+
+    public function checkout(){
+        return view('front.checkout');
+    }
 }
