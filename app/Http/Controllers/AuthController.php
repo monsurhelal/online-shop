@@ -23,6 +23,10 @@ class AuthController extends Controller
             if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
                 $user = Auth::user();
                 if($user->role == 1){
+                    if(session()->has('url.intended')){
+                       //dd(session()->get('url.intended')) ;
+                        return redirect()->route(session()->get('url.intended'));
+                    }
                     return redirect()->route('user.profile');
                 }else{
                     return redirect()->route('user.login')->with('error','you are not valid to login');

@@ -15,6 +15,7 @@
 
 <section class=" section-9 pt-4">
     <div class="container">
+        @if (Cart::count() > 0)
         <div class="row">
             <div class="col-md-8">
                 <div class="table-responsive">
@@ -95,7 +96,7 @@
                             <div>${{ Cart::subtotal() }}</div>
                         </div>
                         <div class="pt-5">
-                            <a href="login.php" class="btn-dark btn btn-block w-100">Proceed to Checkout</a>
+                            <a href="{{ route('shop.checkout') }}" class="btn-dark btn btn-block w-100">Proceed to Checkout</a>
                         </div>
                     </div>
                 </div>     
@@ -105,6 +106,9 @@
                 </div>  --}}
             </div>
         </div>
+        @else
+        <p>cart is empty</p>
+        @endif
     </div>
 </section>
     
