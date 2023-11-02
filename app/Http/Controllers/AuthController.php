@@ -25,7 +25,7 @@ class AuthController extends Controller
                 if($user->role == 1){
                     if(session()->has('url.intended')){
                        //dd(session()->get('url.intended')) ;
-                        return redirect()->route(session()->get('url.intended'));
+                        return redirect(session()->get('url.intended'));
                     }
                     return redirect()->route('user.profile');
                 }else{
