@@ -26,20 +26,20 @@
                                 
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name">
+                                        <input type="text" name="first_name" id="first_name" class="form-control" value="{{ (!empty($customarAddress)) ? $customarAddress->fast_name : '' }}" placeholder="First Name">
                                         <p></p>
                                     </div>            
                                 </div>
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name">
+                                        <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name" value="{{ (!empty($customarAddress)) ? $customarAddress->last_name : '' }}">
                                         <p></p>
                                     </div>            
                                 </div>
                                 
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <input type="text" name="email" id="email" class="form-control" placeholder="Email">
+                                        <input type="text" name="email" id="email" class="form-control" placeholder="Email"value="{{ (!empty($customarAddress)) ? $customarAddress->email : '' }}">
                                         <p></p>
                                     </div>            
                                 </div>
@@ -49,7 +49,7 @@
                                         <select name="country" id="country" class="form-control">
                                             <option value="">Select a Country</option>
                                             @foreach ($countries as $country)
-                                                <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                                <option  {{ (!empty($customarAddress && $customarAddress->country_id == $country->id )) ? 'selected': '' }} value="{{ $country->id }}">{{ $country->name }}</option>
                                             @endforeach
                                         </select>
                                         <p></p>
@@ -58,42 +58,42 @@
 
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <textarea name="address" id="address" cols="30" rows="3" placeholder="Address" class="form-control"></textarea>
+                                        <textarea name="address" id="address" cols="30" rows="3" placeholder="Address" class="form-control">{{ (!empty($customarAddress)) ? $customarAddress->address : '' }}</textarea>
                                         <p></p>
                                     </div>            
                                 </div>
 
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <input type="text" name="appartment" id="appartment" class="form-control" placeholder="Apartment, suite, unit, etc. (optional)">
+                                        <input type="text" name="appartment" id="appartment" class="form-control" placeholder="Apartment, suite, unit, etc. (optional)"  value="{{ (!empty($customarAddress)) ? $customarAddress->aparmemt : '' }}">
                                     <p></p>
                                     </div>            
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <input type="text" name="city" id="city" class="form-control" placeholder="City">
+                                        <input type="text" name="city" id="city" class="form-control" placeholder="City"  value="{{ (!empty($customarAddress)) ? $customarAddress->city : '' }}">
                                         <p></p>
                                     </div>            
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <input type="text" name="state" id="state" class="form-control" placeholder="State">
+                                        <input type="text" name="state" id="state" class="form-control" placeholder="State"  value="{{ (!empty($customarAddress)) ? $customarAddress->status : '' }}">
                                         <p></p>
                                     </div>            
                                 </div>
                                 
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <input type="text" name="zip" id="zip" class="form-control" placeholder="Zip">
+                                        <input type="text" name="zip" id="zip" class="form-control" placeholder="Zip"  value="{{ (!empty($customarAddress)) ? $customarAddress->zip : '' }}">
                                         <p></p>
                                     </div>            
                                 </div>
 
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <input type="text" name="mobile" id="mobile" class="form-control" placeholder="Mobile No.">
+                                        <input type="text" name="mobile" id="mobile" class="form-control" placeholder="Mobile No." value="{{ (!empty($customarAddress)) ? $customarAddress->mobile : '' }}">
                                         <p></p>
                                     </div>            
                                 </div>

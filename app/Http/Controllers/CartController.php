@@ -98,9 +98,9 @@ class CartController extends Controller
             return redirect()->route('user.login');
         }
         session()->forget('url.intended');
-
+        $customarAddress = customer_address::where('user_id',Auth::user()->id)->first();
         $countries = country::orderBy('name','ASC')->get();
-        return view('front.checkout',compact('countries'));
+        return view('front.checkout',compact(['countries','customarAddress']));
     }
 
     public function processCheckout(Request $request){
