@@ -11,6 +11,7 @@ use App\Http\Controllers\admin\TempImageController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\frontController;
+use App\Http\Controllers\ShippingControler;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -35,6 +36,7 @@ Route::post('/delete-item', [CartController::class,'deleteItem'])->name('shop.de
 Route::get('/checkout', [CartController::class,'checkout'])->name('shop.checkout');
 Route::post('/processCheckout', [CartController::class,'processCheckout'])->name('shop.processCheckout');
 Route::get('/thankYou/{orderId}', [CartController::class,'thankYou'])->name('shop.thankYou');
+
 
 
 
@@ -92,8 +94,10 @@ Route::group(['prefix'=>'admin'],function(){
 
         Route::get('/product_sub_categories', [ProductSubCategoryControlller::class,'index'])->name('product_sub_categories.index');
 
-
-        //temp image route here
+        //shipping route here
+        Route::get('/shipping/create', [ShippingControler::class,'create'])->name('shipping.create');
+        Route::post('/shipping/store', [ShippingControler::class,'store'])->name('shipping.store');
+            //temp image route here
         Route::post('/temp-upload-image', [TempImageController::class,'create'])->name('temp-images.create');
 
 
