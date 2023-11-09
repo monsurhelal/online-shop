@@ -95,6 +95,7 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('/product_sub_categories', [ProductSubCategoryControlller::class,'index'])->name('product_sub_categories.index');
 
         //shipping route here
+        Route::get('/shipping', [ShippingControler::class,'index'])->name('shipping.index');
         Route::get('/shipping/create', [ShippingControler::class,'create'])->name('shipping.create');
         Route::post('/shipping/store', [ShippingControler::class,'store'])->name('shipping.store');
             //temp image route here

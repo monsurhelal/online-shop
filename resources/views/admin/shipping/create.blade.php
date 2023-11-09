@@ -81,7 +81,7 @@ $.ajax({
 
         if (response['status'] == true) {
 
-            window.location.href= "{{ route('sub-categories.index') }}";
+            window.location.href= "{{ route('shipping.index') }}";
 
             $('#country').removeClass('is-invalid').siblings('p').removeClass('invalid-feedback').html("");
              $('#amount').removeClass('is-invalid').siblings('p').removeClass('invalid-feedback').html("");

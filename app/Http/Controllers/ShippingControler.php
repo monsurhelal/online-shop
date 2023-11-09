@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Validator;
 
 class ShippingControler extends Controller
 {
+    public function index(){
+        
+    }
     public function create(Request $request){
         $countries = country::all();
         return view('admin.shipping.create',compact('countries'));
