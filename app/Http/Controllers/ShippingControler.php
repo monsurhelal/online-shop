@@ -14,7 +14,9 @@ class ShippingControler extends Controller
     }
     public function create(Request $request){
         $countries = country::all();
-        return view('admin.shipping.create',compact('countries'));
+        $shippingCharges = Shipping::select('shippings.*','countries.name')
+                                    ->leftJoin('countries','countries.id','shippings.country_id')->get();
+        return view('admin.shipping.create',compact(['countries','shippingCharges']));
     }
 
     public function store(Request $request){
@@ -42,5 +44,8 @@ class ShippingControler extends Controller
             ]);
         }
 
+    }
+    public function edit(Request $request,$id){
+        return view('admin.shipping.edit');
     }
 }

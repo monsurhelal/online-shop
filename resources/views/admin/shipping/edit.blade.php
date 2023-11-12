@@ -57,36 +57,6 @@
                                 <a href="subcategory.html" class="btn btn-outline-dark ml-3">Cancel</a>
                             </div>
                         </form>
-                        <div class="card">
-                            <div class="card-body">								
-                                <div class="row">
-                                     <div class="col-md-12">
-                                        <div class="mb-3">
-                                            <table  class="table table-hover">
-                                                <tr>
-                                                    <th>Id</th>
-                                                    <th>Name</th>
-                                                    <th>Amount</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                                @foreach ($shippingCharges as $shippingCharge)
-                                                <tr>
-                                                    <td>{{ $shippingCharge->id }}</td>
-                                                    <td>{{ ($shippingCharge->country_id == "rest_of_wrold") ? "rest of the world" : $shippingCharge->name }}</td>
-                                                    <td>{{ $shippingCharge->amount }}</td>
-                                                    <td>
-                                                        <a class="btn btn-primary" href="">Edit</a>
-                                                        <a class="btn btn-danger" href="">delete</a>
-                                                    </td>
-                                                    
-                                                </tr>
-                                                @endforeach
-                                            </table>
-                                        </div>
-                                     </div>
-                                </div>
-                            </div>
-					</div>
 					<!-- /.card -->
 				</section>
 				<!-- /.content -->
