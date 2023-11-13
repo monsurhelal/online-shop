@@ -95,9 +95,12 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('/product_sub_categories', [ProductSubCategoryControlller::class,'index'])->name('product_sub_categories.index');
 
         //shipping route here
-        Route::get('/shipping/edit', [ShippingControler::class,'index'])->name('shipping.edit');
+        
         Route::get('/shipping/create', [ShippingControler::class,'create'])->name('shipping.create');
         Route::post('/shipping/store', [ShippingControler::class,'store'])->name('shipping.store');
+        Route::get('/shipping/edit/{id}', [ShippingControler::class,'edit'])->name('shipping.edit');
+        Route::put('/shipping/edit/{id}', [ShippingControler::class,'update'])->name('shipping.update');
+        Route::delete('/shipping/delete/{id}', [ShippingControler::class,'destroy'])->name('shipping.delete');
             //temp image route here
         Route::post('/temp-upload-image', [TempImageController::class,'create'])->name('temp-images.create');
 

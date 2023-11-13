@@ -20,6 +20,7 @@
 				<section class="content">
 					<!-- Default box -->
 					<div class="container-fluid">
+                        @include('admin.message')
                         <form action="" name="shippingForm" id="shippingForm">
                             <div class="card">
                                 <div class="card-body">								
@@ -75,8 +76,8 @@
                                                     <td>{{ ($shippingCharge->country_id == "rest_of_wrold") ? "rest of the world" : $shippingCharge->name }}</td>
                                                     <td>{{ $shippingCharge->amount }}</td>
                                                     <td>
-                                                        <a class="btn btn-primary" href="">Edit</a>
-                                                        <a class="btn btn-danger" href="">delete</a>
+                                                        <a href="{{ route('shipping.edit',$shippingCharge->id) }}"class="btn btn-primary" href="">Edit</a>
+                                                        <a href="javascript:void(0)" onclick=" deleteShipping({{$shippingCharge->id}}) " class="btn btn-danger" href="">delete</a>
                                                     </td>
                                                     
                                                 </tr>
@@ -139,6 +140,29 @@ $.ajax({
 })
 
 });
+function deleteShipping(id){
+
+let url = '{{ route("shipping.delete","Id") }}';
+let newUrl = url.replace("Id",id);
+
+if(confirm('do you want to delete?')){
+    $.ajax({
+        url : newUrl,
+        type : "delete",
+        dataType : 'json',
+        data : {},
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success : function(response){
+
+            if (response['status']) {
+                window.location.href = "{{ route('shipping.create') }}";
+            }
+
+        }
+    })
+}}
 $('#name').change(function(){
 
 var element = $(this);

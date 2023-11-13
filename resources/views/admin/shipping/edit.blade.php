@@ -32,11 +32,11 @@
                                                     @if ($countries->isNotEmpty())
 
                                                         @foreach ($countries as $country)
-                                                            <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                                            <option {{ ($shippingCharge->country_id == $country->id) ? 'selected' : '' }} value="{{ $country->id }}">{{ $country->name }}</option>
                                                         @endforeach
                                                         
                                                     @endif
-                                                    <option value="rest_of_wrold">rest of the world</option>
+                                                    <option {{ ($shippingCharge->country_id == 'rest_of_wrold') ? 'selected' : '' }} value="rest_of_wrold">rest of the world</option>
                                                 </select>
                                                 <p></p>
                                             </div>
@@ -44,8 +44,8 @@
 
                                      	<div class="col-md-6">
                                             <div class="mb-3">
-                                                <label for="amount">Slug</label>
-                                                <input type="text" name="amount" id="amount" class="form-control" placeholder="Amount">	
+                                                <label for="amount">Amount</label>
+                                                <input value="{{ $shippingCharge->amount }}" type="text" name="amount" id="amount" class="form-control" placeholder="Amount">	
                                                 <p></p>
                                             </div>
                                         </div>						
@@ -53,7 +53,7 @@
                                 </div>							
                             </div>
                             <div class="pb-5 pt-3">
-                                <button type="submit" class="btn btn-primary">Create</button>
+                                <button type="submit" class="btn btn-primary">update</button>
                                 <a href="subcategory.html" class="btn btn-outline-dark ml-3">Cancel</a>
                             </div>
                         </form>
@@ -72,8 +72,8 @@ e.preventDefault();
 const element = $('#shippingForm');
 
 $.ajax({
-    url : '{{ route("shipping.store") }}',
-    type : 'post',
+    url : '{{ route("shipping.update",$shippingCharge->id) }}',
+    type : 'put',
     data : element.serializeArray(),
     datatype : 'json',
     success : function(response){
